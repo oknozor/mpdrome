@@ -1,0 +1,10 @@
+[package]
+name = "mpdrome-macro"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+mpdrome-derive = { workspace = true, optional = true }
+
+[features]
+derive = ["dep:mpdrome-derive"]

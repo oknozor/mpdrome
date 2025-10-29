@@ -1,0 +1,12 @@
+[package]
+name = "mpdrome"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+mpdrome-mpd.workspace = true
+mpdrome-subsonic.workspace = true
+mpdrome-config.workspace = true
+mpdrome-bridge.workspace = true
+
+color-eyre.workspace = true
