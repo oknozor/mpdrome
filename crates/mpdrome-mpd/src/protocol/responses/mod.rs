@@ -10,6 +10,7 @@ use crate::protocol::{
 
 pub mod commands;
 pub mod readpicture;
+pub mod song;
 pub mod status;
 
 pub struct OK;

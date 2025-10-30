@@ -34,4 +34,8 @@ impl MpdBridge for SubSonicClient {
             .flat_map(|indexi3| indexi3.artist.into_iter().map(|artist| Ok(artist.name)))
             .collect()
     }
+
+    fn get_artist(&self) -> color_eyre::Result<mpdrome_bridge::Artist> {
+        todo!()
+    }
 }
