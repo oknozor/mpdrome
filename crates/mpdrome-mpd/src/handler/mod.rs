@@ -2,6 +2,7 @@ use std::io::Write;
 
 use mpdrome_bridge::MpdBridge;
 use mpdrome_macro::ToMpdResponse;
+use mpdrome_mpd_model::{artist::Artists, status::Status};
 
 use crate::{
     listener::{Listener, ListenerResult},
@@ -10,7 +11,7 @@ use crate::{
             Args, Request,
             filter::{self, Expression},
         },
-        responses::{Artists, OK, Response, commands::CommandsResponse, status::StatusResponse},
+        responses::{Response, commands::Commands},
     },
 };
 
@@ -22,16 +23,16 @@ impl<T: MpdBridge + Clone> Handler for Listener<T> {
     fn handle(&mut self, request: Request, args: Args) -> ListenerResult<()> {
         println!("{:?} - {:?}", request, args);
         let response = match request {
-            Request::Commands => Response::Commands(CommandsResponse::default()),
-            Request::Binarylimit => Response::Ok(OK),
-            Request::Status => Response::Status(StatusResponse::default()),
-            Request::Playlistinfo => Response::Ok(OK),
+            Request::Commands => Response::Commands(Commands::default()),
+            Request::Binarylimit => Response::Ok,
+            Request::Status => Response::Status(Status::default()),
+            Request::Playlistinfo => Response::Ok,
             Request::Idle => {
                 self.idle_wait()?;
-                Response::Ok(OK)
+                Response::Ok
             }
-            Request::Lsinfo => Response::Ok(OK),
-            Request::Listplaylists => Response::Ok(OK),
+            Request::Lsinfo => Response::Ok,
+            Request::Listplaylists => Response::Ok,
             Request::List => self.handle_list(args)?,
             Request::Find => self.handle_find(args)?,
             command => unimplemented!("unimplemented command: {command}"),

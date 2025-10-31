@@ -1,26 +1,12 @@
 use std::io::{self, Write};
 
 use mpdrome_macro::{MpdResponse, ToMpdResponse};
+use mpdrome_mpd_model::{artist::Artists, song::Song, status::Status};
 use strum::Display;
 
-use crate::protocol::{
-    requests::Request,
-    responses::{commands::CommandsResponse, status::StatusResponse},
-};
+use crate::protocol::{requests::Request, responses::commands::Commands};
 
 pub mod commands;
-pub mod readpicture;
-pub mod song;
-pub mod status;
-
-pub struct OK;
-
-impl ToMpdResponse for OK {
-    fn write_response<W: Write>(&self, w: &mut W) -> io::Result<()> {
-        w.write_all(b"OK\n")?;
-        w.flush()
-    }
-}
 
 #[derive(MpdResponse)]
 pub struct Ack {
@@ -46,25 +32,22 @@ pub enum AckError {
     AckErrorExist = 56,
 }
 
-#[derive(MpdResponse)]
-pub struct Artists {
-    pub artist: Vec<String>,
-}
-
 pub enum Response {
-    Commands(CommandsResponse),
-    Status(StatusResponse),
+    Commands(Commands),
+    Status(Status),
     ListArtist(Artists),
-    Ok(OK),
+    Songs(Vec<Song>),
+    Ok,
 }
 
 impl ToMpdResponse for Response {
-    fn write_response<W: Write>(&self, w: &mut W) -> io::Result<()> {
+    fn write_content<W: Write>(&self, w: &mut W) -> io::Result<()> {
         match self {
-            Response::Commands(response) => response.write_response(w),
-            Response::Status(response) => response.write_response(w),
-            Response::Ok(response) => response.write_response(w),
-            Response::ListArtist(response) => response.write_response(w),
+            Response::Commands(response) => response.write_content(w),
+            Response::Status(response) => response.write_content(w),
+            Response::ListArtist(response) => response.write_content(w),
+            Response::Songs(response) => response.write_content(w),
+            Response::Ok => Ok(()),
         }
     }
 }

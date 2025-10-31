@@ -2,7 +2,7 @@ use mpdrome_macro::MpdResponse;
 use strum::Display;
 
 #[derive(MpdResponse)]
-pub struct StatusResponse {
+pub struct Status {
     pub partition: String,
     pub volume: u32,
     pub repeat: bool,
@@ -47,7 +47,7 @@ pub enum State {
     Pausse,
 }
 
-impl Default for StatusResponse {
+impl Default for Status {
     fn default() -> Self {
         Self {
             volume: 0,

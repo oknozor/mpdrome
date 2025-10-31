@@ -35,6 +35,21 @@ impl MpdBridge for SubSonicClient {
             .collect()
     }
 
+    fn search(&self, query: &str) -> color_eyre::Result<mpdrome_bridge::Artist> {
+        let response = self.rt.block_on(self.client.search3(
+            query,
+            None,
+            None,
+            None,
+            None,
+            Some(250),
+            None,
+            Option::<String>::None,
+        ))?;
+
+        todo!()
+    }
+
     fn get_artist(&self) -> color_eyre::Result<mpdrome_bridge::Artist> {
         todo!()
     }

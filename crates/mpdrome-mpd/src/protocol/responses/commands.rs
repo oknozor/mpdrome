@@ -4,11 +4,11 @@ use strum::VariantNames;
 use crate::protocol::requests::Request;
 
 #[derive(MpdResponse)]
-pub struct CommandsResponse {
+pub struct Commands {
     command: Vec<&'static str>,
 }
 
-impl Default for CommandsResponse {
+impl Default for Commands {
     fn default() -> Self {
         Self {
             command: Request::VARIANTS.to_vec(),

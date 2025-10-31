@@ -12,6 +12,5 @@ thiserror.workspace = true
 
 mpdrome-macro.workspace = true
 mpdrome-bridge.workspace = true
-
-[dev-dependencies]
-pretty_assertions.workspace = true
+mpdrome-mpd-model.workspace = true
+mpdrome-mpd-parser.workspace = true

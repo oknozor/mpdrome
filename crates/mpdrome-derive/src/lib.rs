@@ -66,10 +66,9 @@ pub fn derive_mpd_response(input: TokenStream) -> TokenStream {
 
     let expanded = quote! {
         impl mpdrome_macro::ToMpdResponse for #name {
-            fn write_response<W: std::io::Write>(&self, w: &mut W) -> std::io::Result<()> {
+            fn write_content<W: std::io::Write>(&self, w: &mut W) -> std::io::Result<()> {
                 use std::io::Write;
                 #(#field_serializers)*
-                write!(w, "OK\n")?;
                 Ok(())
             }
         }

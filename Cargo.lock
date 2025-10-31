@@ -901,11 +901,25 @@ dependencies = [
  "async-trait",
  "mpdrome-bridge",
  "mpdrome-macro",
+ "mpdrome-mpd-model",
+ "mpdrome-mpd-parser",
  "nom",
- "pretty_assertions",
  "strum",
  "thiserror 2.0.17",
 ]
+
+[[package]]
+name = "mpdrome-mpd-model"
+version = "0.1.0"
+dependencies = [
+ "mpdrome-macro",
+ "pretty_assertions",
+ "strum",
+]
+
+[[package]]
+name = "mpdrome-mpd-parser"
+version = "0.1.0"
 
 [[package]]
 name = "mpdrome-subsonic"

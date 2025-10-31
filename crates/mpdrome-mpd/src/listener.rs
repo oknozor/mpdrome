@@ -42,10 +42,6 @@ impl<T: MpdBridge + Clone> Listener<T> {
         &self.bridge
     }
 
-    pub fn writer(&mut self) -> &mut TcpStream {
-        &mut self.inner
-    }
-
     pub fn handshake(&mut self) -> io::Result<()> {
         self.inner.write_all(b"OK MPD 0.26.0\n")?;
         Ok(())
