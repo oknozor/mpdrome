@@ -8,7 +8,26 @@ use nom::{
     sequence::{delimited, preceded},
 };
 
-use crate::protocol::requests::{Args, Command, Request, error::CommandError};
+use crate::{error::CommandError, request::Request};
+
+pub struct Command {
+    pub request: Request,
+    pub args: Args,
+}
+
+#[derive(Debug)]
+pub struct Args(Vec<String>);
+
+impl Args {
+    pub fn contains(&self, term: impl ToString) -> bool {
+        let term = term.to_string().to_lowercase();
+        self.0.iter().any(|s| s.to_lowercase() == term)
+    }
+
+    pub fn into_iter(self) -> impl Iterator<Item = String> {
+        self.0.into_iter()
+    }
+}
 
 impl Command {
     pub fn parse(source: &str) -> Result<Self, CommandError> {

@@ -7,10 +7,9 @@ edition = "2024"
 strum.workspace = true
 anyhow.workspace = true
 async-trait.workspace = true
-nom.workspace = true
 thiserror.workspace = true
 
 mpdrome-macro.workspace = true
 mpdrome-bridge.workspace = true
 mpdrome-mpd-model.workspace = true
-mpdrome-mpd-parser.workspace = true
+mpdrome-mpd-protocol.workspace = true

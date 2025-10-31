@@ -3,16 +3,15 @@ use std::io::Write;
 use mpdrome_bridge::MpdBridge;
 use mpdrome_macro::ToMpdResponse;
 use mpdrome_mpd_model::{artist::Artists, status::Status};
+use mpdrome_mpd_protocol::{
+    command::Args,
+    filter::{self, Expression},
+    request::Request,
+};
 
 use crate::{
     listener::{Listener, ListenerResult},
-    protocol::{
-        requests::{
-            Args, Request,
-            filter::{self, Expression},
-        },
-        responses::{Response, commands::Commands},
-    },
+    responses::{Response, commands::Commands},
 };
 
 pub trait Handler {

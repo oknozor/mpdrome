@@ -2,9 +2,10 @@ use std::io::{self, Write};
 
 use mpdrome_macro::{MpdResponse, ToMpdResponse};
 use mpdrome_mpd_model::{artist::Artists, song::Song, status::Status};
+use mpdrome_mpd_protocol::request::Request;
 use strum::Display;
 
-use crate::protocol::{requests::Request, responses::commands::Commands};
+use crate::responses::commands::Commands;
 
 pub mod commands;
 

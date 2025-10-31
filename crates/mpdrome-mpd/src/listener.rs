@@ -4,8 +4,7 @@ use std::{
 };
 
 use mpdrome_bridge::{BridgeError, MpdBridge};
-
-use crate::protocol::requests::{Command, Request, error::CommandError};
+use mpdrome_mpd_protocol::{command::Command, error::CommandError, request::Request};
 
 pub struct Listener<T: MpdBridge + Clone> {
     inner: TcpStream,

@@ -1,13 +1,13 @@
 use mpdrome_bridge::MpdBridge;
+use mpdrome_mpd_protocol::command::Command;
 
 use crate::handler::Handler;
 use crate::listener::Listener;
-use crate::protocol::requests::Command;
 use std::net::TcpListener;
 
 mod handler;
 mod listener;
-mod protocol;
+mod responses;
 
 pub struct Mpd<T: MpdBridge + Clone> {
     addr: String,

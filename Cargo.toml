@@ -23,5 +23,5 @@ mpdrome-derive = { path = "crates/mpdrome-derive" }
 mpdrome-macro = { path = "crates/mpdrome-macro", features = ["derive"] }
 mpdrome-mpd = { path = "crates/mpdrome-mpd"}
 mpdrome-mpd-model = { path = "crates/mpdrome-mpd-model"}
-mpdrome-mpd-parser = { path = "crates/mpdrome-mpd-parser"}
+mpdrome-mpd-protocol = { path = "crates/mpdrome-mpd-protocol"}
 mpdrome-bridge = { path = "crates/mpdrome-bridge"}

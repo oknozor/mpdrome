@@ -867,6 +867,7 @@ name = "mpdrome-bridge"
 version = "0.1.0"
 dependencies = [
  "color-eyre",
+ "mpdrome-mpd-protocol",
 ]
 
 [[package]]
@@ -902,8 +903,7 @@ dependencies = [
  "mpdrome-bridge",
  "mpdrome-macro",
  "mpdrome-mpd-model",
- "mpdrome-mpd-parser",
- "nom",
+ "mpdrome-mpd-protocol",
  "strum",
  "thiserror 2.0.17",
 ]
@@ -918,8 +918,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "mpdrome-mpd-parser"
+name = "mpdrome-mpd-protocol"
 version = "0.1.0"
+dependencies = [
+ "nom",
+ "strum",
+ "thiserror 2.0.17",
+]
 
 [[package]]
 name = "mpdrome-subsonic"
@@ -927,6 +932,7 @@ version = "0.1.0"
 dependencies = [
  "color-eyre",
  "mpdrome-bridge",
+ "mpdrome-mpd-model",
  "submarine",
  "tokio",
 ]

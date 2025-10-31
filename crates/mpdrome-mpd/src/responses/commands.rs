@@ -1,7 +1,6 @@
 use mpdrome_macro::MpdResponse;
+use mpdrome_mpd_protocol::request::Request;
 use strum::VariantNames;
-
-use crate::protocol::requests::Request;
 
 #[derive(MpdResponse)]
 pub struct Commands {
